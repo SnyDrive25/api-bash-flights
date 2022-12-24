@@ -25,7 +25,7 @@ app.post('/send', function(req, res) {
 });
 
 function send(dep, arr) {
-  console.log('\n\nDepart:', dep, '\nArrivée:', arr, '\n');
+  console.log('\n\n----------------------------------\n--        S N Y    A I R        --\n----------------------------------\n\nDepart:', dep, '\nArrivée:', arr, '\n');
   exec('./snyair-flight.sh ' + dep + ' ' + arr, (error, stdout) => {
     if (error) {
       console.error(`exec error: ${error}`);

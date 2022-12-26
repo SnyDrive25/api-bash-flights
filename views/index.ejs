@@ -281,6 +281,8 @@
         function cc() {
             var dep = document.getElementById('dep').value;
             var arr = document.getElementById('arr').value;
+            var mydate = document.getElementById('mydate').value;
+            var oneway = document.getElementById('oneway').value;
             if(dep==null || arr==null) {
                 alert("Please fill the inputs");
             }
@@ -291,6 +293,13 @@
                 xhr.send(JSON.stringify({ dep: dep, arr: arr }));
                 xhr.onload = function() {
                     console.log("Requête envoyée sans erreur\nDepart:", dep, "\nArrivee:", arr);
+                }
+                const xhr2 = new XMLHttpRequest();
+                xhr2.open("POST", "/send2");
+                xhr2.setRequestHeader("Content-Type", "application/json");
+                xhr2.send(JSON.stringify({ dep: dep, arr: arr, mydate: mydate, oneway: oneway }));
+                xhr2.onload = function() {
+                    console.log("Requête envoyée sans erreur\nDepart:", dep, "\nArrivee:", arr, "\nDate:", mydate, "\nOne Way? ", oneway);
                 }
             }
             
@@ -309,16 +318,12 @@
             <input placeholder="Write your SQL request (example : SELECT altitude FROM plane WHERE speed > 900)"></input>
             <p>Or sort by</p>
             <div class="inputs">
-              <input placeholder="IATA Code" id="dep"></input>
-              <input placeholder="Aircraft" id="arr"></input>
+              <input placeholder="Departure IATA Code" id="dep"></input>
+              <input placeholder="Arrival IATA Code" id="arr"></input>
             </div>
             <div class="inputs">
-              <input placeholder="Minimum Speed" type="number"></input>
-              <input placeholder="Maximum Speed" type="number"></input>
-            </div>
-            <div class="inputs">
-              <input placeholder="Minimum Altitude" type="number"></input>
-              <input placeholder="Maximum Altitude" type="number"></input>
+              <input placeholder="Date (ex : 2022-12-25)" id="mydate"></input>
+              <input placeholder="One Way ?(frue or false)" id="oneway"></input>
             </div>
             <div class="space"></div>
             <button class="form_button" id="send" onclick="cc()">Get flight details</button>

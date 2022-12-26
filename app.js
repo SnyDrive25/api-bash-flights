@@ -26,9 +26,25 @@ app.post('/send', function(req, res) {
   res.sendStatus(200);
 });
 
+app.post('/send2', function(req, res) {
+  send2(req.body.dep, req.body.arr, req.body.mydate, req.body.oneway);
+  res.sendStatus(200);
+});
+
 function send(dep, arr) {
   console.log('\n\n----------------------------------\n--        S N Y    A I R        --\n----------------------------------\n\nDepart:', dep, '\nArrivée:', arr, '\n');
   exec('./snyair-flight.sh ' + dep + ' ' + arr, (error, stdout) => {
+    if (error) {
+      console.error(`exec error: ${error}`);
+      return;
+    }
+    console.log(`${stdout}`);
+  });
+}
+
+function send2(dep, arr, mydate, oneway) {
+  console.log('\n\n----------------------------------\n--        S N Y    A I R        --\n----------------------------------\n\nDepart:', dep, '\nArrivée:', arr, '\nDate:', mydate, '\nOne Way? ', oneway, '\n');
+  exec('./snyair-price.sh ' + dep + ' ' + arr + ' ' + mydate + ' ' + oneway, (error, stdout) => {
     if (error) {
       console.error(`exec error: ${error}`);
       return;

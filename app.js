@@ -10,6 +10,8 @@ const app = express();
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
+app.use(express.static('public'));
+
 app.set('view engine', 'ejs');
 app.set('views', './views');
 
@@ -46,6 +48,6 @@ app.get('/a', (req, res) => {
   });
 });
 
-app.listen(2828, () => {
-  console.log('Server listening on http://localhost:2828');
+app.listen(2525, () => {
+  console.log('Server listening on http://localhost:2525');
 });

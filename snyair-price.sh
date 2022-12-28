@@ -1,7 +1,9 @@
 #!/bin/bash
 
-curl -X GET "https://test.api.amadeus.com/v1/analytics/itinerary-price-metrics?originIataCode=$1&destinationIataCode=$2&departureDate=$3&currencyCode=USD&oneWay=$4" -H "Authorization: Bearer fleI0htH7JFN1nOwDaOi21Yejr4A" > data2.json
+curl -X GET "https://test.api.amadeus.com/v1/shopping/flight-offers?origin=$1&destination=$2&departureDate=$3&oneWay=$4" -H "Authorization: Bearer ApjU0sEenniHCgPDrndzOSWFk5mN" > data2.json
 
 res=$(grep -o '"amount": "[0-9.]\+"' data2.json)
 
-echo -e "\n$res\n"
+echo -e "\nBonjour $res\n"
+
+curl -s --data chat_id="5716818874" --data-urlencode "text=Prix très bas pour un vol CDG-JFK ($ $res) le $3 " "https://api.telegram.org/bot5711757703:AAEK9nWX--WUyD2kPjpgiGTjRNps0zVErJ8/sendMessage?parse_mode"

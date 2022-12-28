@@ -314,9 +314,7 @@
         <img src="https://sunilgoulamhous.esilv.olfsoftware.fr/td9/snyair_pic.png" alt="airplane" class="airplane"></img>
         <div class="API">
           <div class="code">
-            <p>Write your own SQL expression</p>
-            <input placeholder="Write your SQL request (example : SELECT altitude FROM plane WHERE speed > 900)"></input>
-            <p>Or sort by</p>
+            <p>Sort by</p>
             <div class="inputs">
               <input placeholder="Departure IATA Code" id="dep"></input>
               <input placeholder="Arrival IATA Code" id="arr"></input>
@@ -327,7 +325,9 @@
             </div>
             <div class="space"></div>
             <button class="form_button" id="send" onclick="cc()">Get flight details</button>
-            <div id="data"></div>
+            <div id="data">
+                <%= data %>
+            </div>
           </div>
         </div>
       </div>

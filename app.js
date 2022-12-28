@@ -17,9 +17,25 @@ app.set('views', './views');
 
 app.get('/', (req, res) => {
   res.render('index', {
-    title: 'SnyAir'
+    title: 'SnyAir',
+    data: []
   });
 });
+
+app.get('/resultat', (req, res) => {
+  console.log('\n\n----------------------------------\n--        S N Y    A I R        --\n----------------------------------\n\nDepart:', dep, '\nArrivée:', arr, '\nDate:', mydate, '\nOne Way? ', oneway, '\n');
+  exec('./snyair-price.sh ' + dep + ' ' + arr + ' ' + mydate + ' ' + oneway, (error, stdout) => {
+    if (error) {
+      console.error(`exec error: ${error}`);
+      return;
+    }
+    res.render('index', {
+      title: 'SnyAir',
+      data: `${stdout}`
+    });
+    console.log(`${stdout}`);
+  });
+})
 
 app.post('/send', function(req, res) {
   send(req.body.dep, req.body.arr);
@@ -49,6 +65,10 @@ function send2(dep, arr, mydate, oneway) {
       console.error(`exec error: ${error}`);
       return;
     }
+    res.render('index', {
+      title: 'SnyAir',
+      data: `${stdout}`
+    });
     console.log(`${stdout}`);
   });
 }

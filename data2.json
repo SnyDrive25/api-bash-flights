@@ -1,12 +1,1 @@
-
-            {
-                "errors": [
-                        {
-                            "code": 38190,
-                            "title": "Invalid access token",
-                            "detail": "The access token provided in the Authorization header is invalid",
-                            "status": 401
-                        }
-                ]
-            }
-        
+{"fault":{"faultstring":"Invalid Access Token","detail":{"errorcode":"keymanagement.service.invalid_access_token"}}}

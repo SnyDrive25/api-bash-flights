@@ -261,11 +261,18 @@ input[type=number] {
 }
 
 #data {
-    min-height: 50vh;
+    position: relative;
+    height: 50vh;
     margin: 60px;
     margin-left: auto;
     margin-right: auto;
     width: 95%;
     border-radius: 10px;
     box-shadow: 0 0 .2em var(--glow-color);
+}
+
+.airtable-embed {
+    height: 50vh;
+    width: 100%;
+    border-radius: 10px;
 }

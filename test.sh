@@ -1,0 +1,1 @@
+grep -oP '"horizontal":\K\d+\.\d+' data.json

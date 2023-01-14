@@ -11,10 +11,10 @@ speed=$(grep -oP '"horizontal":\K\d+\.\d+' data.json)
 mydate=$(date +"%F - %H:%M")
 
 # Test if the variable is not null
-if [ -n "$iataCode" ]; then
-  echo -e "[$mydate]\n\nIATA Code = $iataCode\nDeparture IATA Code = $depIata\nArrival IATA Code = $arrIata\nAltitude = $altitude\nSpeed = $speed"
-  # Insert the new record
-  curl -X POST https://api.airtable.com/v0/appKbA12GVyZvlbMu/anomalies -H "Authorization: Bearer keyZAgEqSGNdXIWLd" -H "Content-Type: application/json" --data '{"fields": {"iataCode": "'"$iataCode"'","Departure": "'"$depIata"'", "Arrival": "'"$arrIata"'", "Altitude": "'"$altitude"'", "Speed": "'"$speed"'", "Date": "'"$mydate"'"},"typecast": true}'
-else
-  echo "No result for your request sorry !"
-fi
+#if [ -n "$iataCode" ]; then
+echo -e "[$mydate]\n\nIATA Code = $iataCode\nDeparture IATA Code = $depIata\nArrival IATA Code = $arrIata\nAltitude = $altitude\nSpeed = $speed"
+# Insert the new record
+curl -X POST https://api.airtable.com/v0/appKbA12GVyZvlbMu/anomalies -H "Authorization: Bearer keyZAgEqSGNdXIWLd" -H "Content-Type: application/json" --data '{"fields": {"iataCode": "'"$iataCode"'","Departure": "'"$depIata"'", "Arrival": "'"$arrIata"'", "Altitude": "'"$altitude"'", "Speed": "'"$speed"'", "Date": "'"$mydate"'"},"typecast": true}'
+#else
+#echo "No result for your request sorry !"
+#fi

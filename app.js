@@ -65,11 +65,13 @@ function send2(dep, arr, mydate, oneway) {
       console.error(`exec error: ${error}`);
       return;
     }
+    /*
     res.render('index', {
       title: 'SnyAir',
       data: `${stdout}`
     });
     console.log(`${stdout}`);
+    */
   });
 }
 

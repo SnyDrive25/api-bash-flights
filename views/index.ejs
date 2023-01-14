@@ -273,8 +273,18 @@
         margin-right: auto;
         width: 95%;
         border-radius: 10px;
-        box-shadow: 0 0 .2em var(--glow-color);
     }
+
+    .airtable-embed {
+        height: 100%;
+        min-height: 50vh;
+        width: 100%;
+        margin: 0;
+        padding: 0;
+        border-radius: 10px;
+        filter: invert(1) grayscale(1);
+    }
+
   </style>
   <body>
     <script>
@@ -302,7 +312,9 @@
                     console.log("Requête envoyée sans erreur\nDepart:", dep, "\nArrivee:", arr, "\nDate:", mydate, "\nOne Way? ", oneway);
                 }
             }
-            
+            setTimeout(() => {
+                window.location.href = '../';
+            },2000);
         }
     </script>
     <div class="page">
@@ -316,8 +328,8 @@
           <div class="code">
             <p>Sort by</p>
             <div class="inputs">
-              <input placeholder="Departure IATA Code" id="dep"></input>
-              <input placeholder="Arrival IATA Code" id="arr"></input>
+              <input placeholder="Departure IATA Code (ex: CDG)" id="dep"></input>
+              <input placeholder="Arrival IATA Code (ex: JFK)" id="arr"></input>
             </div>
             <div class="inputs">
               <input placeholder="Date (ex : 2022-12-25)" id="mydate"></input>
@@ -326,7 +338,7 @@
             <div class="space"></div>
             <button class="form_button" id="send" onclick="cc()">Get flight details</button>
             <div id="data">
-                <%= data %>
+                <iframe class="airtable-embed" src="https://airtable.com/embed/shrLQib4EEpcreJbs?backgroundColor=blue&layout=card" frameborder="0" onmousewheel=""></iframe>
             </div>
           </div>
         </div>
